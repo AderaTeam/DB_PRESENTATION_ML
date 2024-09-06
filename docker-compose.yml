@@ -1,5 +1,8 @@
 version: '3.1'
-
+ 
+      # poetry export -f requirements.txt > requirements_lock.txt &&
+      # pip install -r requirements_lock.txt &&
+      # cd src &&
 services:
 
   topic_modelling_service:
@@ -8,11 +11,11 @@ services:
     volumes:
       - ./topic_modelling_service/:/app/
     command:
-      bash -c "pip install poetry uvicorn && ls &&
-      poetry export -f requirements.txt > requirements.txt &&
-      pip install -r requirements.txt &&
+      bash -c "pip install -r requirements.txt &&
       cd src &&
       uvicorn main:app --host 0.0.0.0 --port 8052"
+    networks:
+      - topic_modelling_network
     ports:
       - 9051:8052
 
@@ -23,21 +26,25 @@ services:
     volumes:
       - ./presentation_generator_service/:/app/
     command:
-      bash -c "pip install poetry &&
-      poetry export -f requirements.txt > requirements.txt &&
-      pip install -r requirements.txt &&
+      bash -c "pip install -r requirements.txt &&
+      python3 -m spacy download ru_core_news_sm &&
       cd src &&
       uvicorn main:app --host 0.0.0.0 --port 8052"
+      # bash -c "pip install poetry &&
+      # poetry export -f requirements.txt > requirements_lock.txt &&
+      # pip install -r requirements_lock.txt &&
+      # cd src &&
+      # uvicorn main:app --host 0.0.0.0 --port 8052"
     links:
      - topic_modelling_service
     networks:
-      - topic_modelling
+      - topic_modelling_network
     ports:
       - 10051:8052
   
 
 networks:
-  topic_modelling:
+  topic_modelling_network:
     driver: bridge
     driver_opts:
       com.docker.network.bridge.host_binding_ipv4: "127.0.0.1"
