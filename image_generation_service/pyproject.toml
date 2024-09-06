@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "image-generation-service"
+version = "0.1.0"
+description = "Service for gettin g image by topic/text for slide"
+authors = ["Цвиркунов Михаил <tsvirkunov@profilum.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+requests = "^2.32.3"
+fastapi = "^0.112.2"
+uvicorn = "^0.30.6"
+pydantic-settings = "^2.4.0"
+python-dotenv = "^1.0.1"
+boto3 = "^1.35.12"
+pymongo = "^4.8.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

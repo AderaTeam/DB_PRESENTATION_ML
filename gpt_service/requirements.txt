@@ -1,0 +1,8 @@
+vllm==0.5.5
+setuptools==74.1.1
+transformers==4.44.2
+torch==2.4.0
+fastapi==0.112.2
+uvicorn==0.30.6
+accelerate==0.34.0
+bitsandbytes==0.43.3

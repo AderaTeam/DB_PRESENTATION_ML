@@ -5,6 +5,31 @@ version: '3.1'
       # cd src &&
 services:
 
+  image_generation_service:
+    image: python:3.11
+    working_dir: /app
+    volumes:
+      - ./image_generation_service/:/app/
+    command:
+      bash -c "pip install -r requirements.txt &&
+      cd src &&
+      uvicorn main:app --host 0.0.0.0 --port 8052"
+    ports:
+      - 11051:8052
+
+  gpt_service:
+    image: python:3.11
+    working_dir: /app
+    volumes:
+      - ./gpt_service/:/app/
+    command:
+      bash -c "pip install -r requirements.txt &&
+      cd src &&
+      uvicorn main:app --host 0.0.0.0 --port 8052"
+    ports:
+      - 10051:8052
+
+
   topic_modelling_service:
     image: python:3.11
     working_dir: /app
