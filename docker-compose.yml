@@ -18,7 +18,7 @@ services:
       - 11051:8052
 
   gpt_service:
-    image: nvidia/cuda
+    image: nvidia/cuda:12.3.1-base-ubuntu20.04
     working_dir: /app
     volumes:
       - ./gpt_service/:/app/
