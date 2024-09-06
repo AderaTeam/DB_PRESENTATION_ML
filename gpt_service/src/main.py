@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from datetime import datetime
 import json
 
-from getters import get_text_gen_prompt
+from getters.get_text_gen_prompt import get_text_gen_prompt
 from models.generate_text_body_models import GenerateTextBodyModel
 from models.generate_topics_texts_body_models import GenerateTopicsTextsBodyModel
 from getters import get_prediction, get_topic_text_prompt
