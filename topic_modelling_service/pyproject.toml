@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "topic-modelling-service"
+version = "0.1.0"
+description = ""
+authors = ["Цвиркунов Михаил <tsvirkunov@profilum.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+spacy = "^3.7.6"
+uvicorn = "^0.30.6"
+sentence-transformers = "^3.0.1"
+scikit-learn = "^1.5.1"
+pydantic = "^2.9.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
