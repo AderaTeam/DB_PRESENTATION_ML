@@ -18,7 +18,7 @@ services:
       - 11051:8052
 
   gpt_service:
-    image: python:3.11
+    image: nvidia/cuda
     working_dir: /app
     volumes:
       - ./gpt_service/:/app/
