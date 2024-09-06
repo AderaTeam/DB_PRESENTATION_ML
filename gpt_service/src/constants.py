@@ -10,6 +10,7 @@ MAIN_MODEL = AutoModelForCausalLM.from_pretrained(
     torch_dtype=torch.bfloat16,
     device_map="auto"
 )
+print("DEVICE: ", MAIN_MODEL.device)
 MAIN_MODEL.eval()
 MAIN_TOKENIZER = AutoTokenizer.from_pretrained(MODEL_NAME)
 GENERATION_CONFIG = GenerationConfig.from_pretrained(MODEL_NAME)
