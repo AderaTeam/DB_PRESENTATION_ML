@@ -11,8 +11,7 @@ services:
     volumes:
       - ./image_generation_service/:/app/
     command:
-      bash -c "apt install python3.10 &&
-      pip install -r requirements.txt &&
+      bash -c "pip install -r requirements.txt &&
       cd src &&
       uvicorn main:app --host 0.0.0.0 --port 8052"
     ports:
@@ -24,7 +23,8 @@ services:
     volumes:
       - ./gpt_service/:/app/
     command:
-      bash -c "pip install -r requirements.txt &&
+      bash -c "apt install python3.10 &&
+      pip install -r requirements.txt &&
       cd src &&
       uvicorn main:app --host 0.0.0.0 --port 8052"
     ports:
