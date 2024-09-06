@@ -5,7 +5,8 @@ import json
 from getters.get_text_gen_prompt import get_text_gen_prompt
 from models.generate_text_body_models import GenerateTextBodyModel
 from models.generate_topics_texts_body_models import GenerateTopicsTextsBodyModel
-from getters import get_prediction, get_topic_text_prompt
+from getters.get_prediction import get_prediction
+from getters.get_topic_text_prompt import get_topic_text_prompt
 
 
 app = FastAPI()
