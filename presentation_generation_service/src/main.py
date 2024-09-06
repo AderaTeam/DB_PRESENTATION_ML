@@ -24,5 +24,9 @@ def generate_presentation(body: GeneratePresentationBodyModel):
     texts = split_on_sub_texts(text=body.text)
     lematized_text = list(map(lambda text_i: lematize_text(text_i, model=NLP_LIGHTFULL_MODEL,), texts))
     topics = get_topics_comutator(texts=lematized_text, max_num_of_topics=body.num_of_themes)
+    presentation = dict()
+    # for i, text_i in enumerate(topics['Representative_Docs']):
+    #     presentation[i] = 
     print(topics)
     return topics.to_dict()
+

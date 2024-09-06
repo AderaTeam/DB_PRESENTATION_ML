@@ -8,3 +8,4 @@ pydantic==2.8.2
 pydantic-settings==2.4.0
 pymongo==4.8.0
 numpy==1.26.4
+python-dotenv==1.0.1
