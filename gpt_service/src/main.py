@@ -19,7 +19,7 @@ def test():
     return json.dumps(sample)
 
 
-@app.get("/generate_text")
+@app.post("/generate_text")
 def generate_text(body: GenerateTextBodyModel):
     samples = []
     for text_i in body.texts:
@@ -29,7 +29,7 @@ def generate_text(body: GenerateTextBodyModel):
     return json.dumps(samples)
 
 
-@app.get("/get_topics_text")
+@app.post("/get_topics_text")
 def get_topics_text(body: GenerateTopicsTextsBodyModel):
     samples = []
     for text_i in body.texts:
