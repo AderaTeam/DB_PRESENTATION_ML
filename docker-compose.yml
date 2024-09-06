@@ -18,13 +18,12 @@ services:
       - 11051:8052
 
   gpt_service:
-    image: nvidia/cuda:12.3.1-base-ubuntu20.04
+    image: pytorch/pytorch:2.0.0-cuda11.7-cudnn8-devel
     working_dir: /app
     volumes:
       - ./gpt_service/:/app/
     command:
-      bash -c "apt install python3.10 &&
-      pip install -r requirements.txt &&
+      bash -c "pip install -r requirements.txt &&
       cd src &&
       uvicorn main:app --host 0.0.0.0 --port 8052"
     ports:
