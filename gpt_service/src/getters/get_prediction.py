@@ -1,4 +1,4 @@
-from src.constants import GENERATION_CONFIG, MAIN_MODEL, MAIN_TOKENIZER
+from constants import GENERATION_CONFIG, MAIN_MODEL, MAIN_TOKENIZER
 
 
 def get_prediction(prompt) -> str:
