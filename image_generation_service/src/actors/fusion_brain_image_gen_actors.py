@@ -14,7 +14,9 @@ class Text2ImageAPIModel:
         }
         response = requests.post(MAIN_MODEL_URL + 'key/api/v1/text2image/run', headers=AUTH_HEADERS, files=data)
         data = response.json()
+        print(data)
         return data['uuid']
+
 
     def check_generation(self, request_id, attempts=10, delay=10):
         while attempts > 0:

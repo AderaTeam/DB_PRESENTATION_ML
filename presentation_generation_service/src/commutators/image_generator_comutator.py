@@ -10,7 +10,7 @@ def image_generator_comutator(text: str, max_num_of_topics: int | None = None):
     data = {
         'text': text,
         "session_id": "string",
-        "num_of_images": 5,
+        "num_of_images": 1,
         "width": 256,
         "height": 256
     }
