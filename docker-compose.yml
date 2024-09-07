@@ -18,7 +18,10 @@ services:
       - 11051:8052
 
   gpt_service:
-    image: tensorflow/tensorflow:latest-gpu
+    image: python:3.11
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
     working_dir: /app
     volumes:
       - ./gpt_service/:/app/
@@ -28,13 +31,6 @@ services:
       uvicorn main:app --host 0.0.0.0 --port 8052"
     ports:
       - 10051:8052
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [gpu]
 
 
   topic_modelling_service:
