@@ -1,13 +1,13 @@
 import requests
-from constants import IMAGE_GENERATION_SERVICE_LINK
+from constants import IMAGE_GENERATION_SERVICE_LINK, TEXT_GENERATION_SERVICE_LINK
 
 
 def get_gpt_comutator(texts: list[str]) -> list[str]:
     session = requests.Session()
     session.trust_env = False
     print(texts)
-    data = session.post(url=IMAGE_GENERATION_SERVICE_LINK + '/topic_moddeling', data={
-        'texts': texts,
+    data = session.post(url=TEXT_GENERATION_SERVICE_LINK + '/generate_text', data={
+        'text': texts,
         'max_new_tokens': 2024,
         'temperature': 0.6,
         'top_p': 0.9

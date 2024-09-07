@@ -11,6 +11,8 @@ from constants import NLP_LIGHTFULL_MODEL
 from commutators.s3_comutator import push_imgs_to_s3
 from commutators.image_generator_comutator import image_generator_comutator
 from commutators.topic_service_comutator import get_topics_comutator
+from getters.get_text import get_shorted_text_by_gpt
+from getters.get_titles import get_titles_by_gpt
 from processors.text_processors import lematize_text, split_on_sub_texts
 from models.generate_presentation_body_models import GeneratePresentationBodyModel
 
@@ -40,8 +42,10 @@ def generate_presentation(body: GeneratePresentationBodyModel):
         slide_name = topics['Name'][i]
         presentation[slide_name] = dict()
         context = ' '.join(topics['Representative_Docs'][i])[:15000]
+        presentation[slide_name]['slide_text'] = get_shorted_text_by_gpt(context)
+        presentation[slide_name]['title'] = get_titles_by_gpt(context)
         presentation[slide_name]['context'] = context
-        img_prompt = ("Нарисуй абстрактное изображение по описанию: " + context)
+        img_prompt = ("Нарисуй абстрактное изображение события по описанию: " + context)
         images = image_generator_comutator(img_prompt)
         print(images)
         img_names = []
