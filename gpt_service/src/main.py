@@ -38,4 +38,4 @@ def get_topics_text(body: GenerateTopicsTextsBodyModel):
         prompt_i = get_topic_text_prompt(text_i)
         prediction_i = get_prediction(prompt_i)
         samples.append(prediction_i)
-    return json.dumps(samples)
+    return json.dumps(samples, ensure_ascii=False)
