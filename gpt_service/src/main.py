@@ -23,11 +23,11 @@ def test():
 @app.post("/generate_text")
 def generate_text(body: GenerateTextBodyModel):
     samples = []
-    print('TEXTS: ', body.texts)
-    for text_i in body.texts:
-        prompt_i = get_text_gen_prompt(text_i)
-        prediction_i = get_prediction(prompt_i)
-        samples.append(prediction_i)
+    print('TEXTS: ', body.text)
+    # for text_i in body.text:
+    prompt_i = get_text_gen_prompt(body.text)
+    prediction_i = get_prediction(prompt_i)
+    samples.append(prediction_i)
     return json.dumps(samples)
 
 
