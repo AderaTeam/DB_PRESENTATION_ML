@@ -28,7 +28,7 @@ def generate_text(body: GenerateTextBodyModel):
     prompt_i = get_text_gen_prompt(body.text)
     prediction_i = get_prediction(prompt_i)
     samples.append(prediction_i)
-    return json.dumps(samples)
+    return json.dumps(samples, ensure_ascii=False)
 
 
 @app.post("/get_topics_text")
