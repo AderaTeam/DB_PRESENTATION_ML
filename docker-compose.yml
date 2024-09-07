@@ -18,7 +18,7 @@ services:
       - 11051:8052
 
   gpt_service:
-    image: floydhub/torch:latest-gpu-py3
+    image: tensorflow/tensorflow:latest-gpu
     working_dir: /app
     volumes:
       - ./gpt_service/:/app/
