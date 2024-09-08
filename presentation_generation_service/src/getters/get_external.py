@@ -31,5 +31,5 @@ def get_external(fn: str):
         S3_CLIENT   
         plt.clf()
         os.remove(d)
-    return d
+    return ds
 
