@@ -127,3 +127,14 @@ def generate_presentation(body: ReGenerateTextBodyModel):
         res = get_gpt_comutator(prompt, 1000, 0.7, 0.8)
         reses.append(res)
     return reses
+
+
+# @app.post("/regenerate_slide")
+# def generate_presentation(body: ReGenerateTextBodyModel):
+#     t = f" - и добавь информациию {body.additional_info}"
+#     prompt = f"Сократи данный текст: {body.context}{t}"
+#     reses = []
+#     for _ in range(5):
+#         res = get_gpt_comutator(prompt, 1000, 0.7, 0.8)
+#         reses.append(res)
+#     return reses
