@@ -64,8 +64,8 @@ services:
       # pip install -r requirements_lock.txt &&
       # cd src &&
       # uvicorn main:app --host 0.0.0.0 --port 8052"
-    links:
-     - topic_modelling_service
+    # links:
+    #  - topic_modelling_service
     # networks:
     #   - topic_modelling_network
     ports:
