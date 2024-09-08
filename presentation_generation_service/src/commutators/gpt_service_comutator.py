@@ -15,4 +15,4 @@ def get_gpt_comutator(texts: str, max_new_tokens=100, temperature=0.6, top_p=0.9
     })
     data = session.post(url=TEXT_GENERATION_SERVICE_LINK + '/generate_text', data=data, verify=False)
     print('RES:', data.status_code)
-    return data.content.decode('utf-8')
+    return data.content.decode('utf-8').replace('\\', '').replace('"', '').replace('[', '').replace(']', '')

@@ -43,6 +43,11 @@ def generate_presentation(body: GeneratePresentationBodyModel):
 
     presentation = dict()
 
+    for i in body.exogen_data:
+        presentation[i] = dict()
+        presentation[i]['slide_type'] = 'CHART'
+        presentation[i]['IMAGE'] = get_external(i)
+
     text_tuples = []
     for i in tqdm(range(topics['Representative_Docs'].shape[0])):
         slide_name = topics['Name'][i]
@@ -59,7 +64,6 @@ def generate_presentation(body: GeneratePresentationBodyModel):
             presentation[slide_name]['numbers_data'] = get_hard_stats_data(context)
             presentation[slide_name]['slide_type'] = 'BIG_NUMBERS'
         else:
-            presentation[slide_name]['slide_type'] = 'HEADERS'
             presentation[slide_name]['slide_text'] = get_shorted_text_by_gpt(context)
             text_tuples
 
@@ -90,9 +94,8 @@ def generate_presentation(body: GeneratePresentationBodyModel):
                     os.remove(img_name)
                 presentation[slide_name]['images'] = img_names
         text_tuples.append(presentation[slide_name]['slide_text'])
-    for i in body.exogen_data:
-        presentation[i] = dict()
-        presentation[i]['IMAGE'] = get_external(i)
+    
+    presentation['HEADER'] = dict()
     presentation['HEADER']['HEADER'] = get_gpt_comutator('Составь очень короткий текст для титульного слайда по следующим темам: ' + ', '.join(text_tuples), 20, 0.7, 0.8)
     print(topics)
     return presentation
