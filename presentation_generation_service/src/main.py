@@ -96,7 +96,7 @@ def generate_presentation(body: GeneratePresentationBodyModel):
         text_tuples.append(presentation[slide_name]['slide_text'])
     
     presentation['HEADER'] = dict()
-    presentation['HEADER']['HEADER'] = get_gpt_comutator('Составь очень короткий текст для титульного слайда по следующим темам: ' + ', '.join(text_tuples), 20, 0.7, 0.8)
+    presentation['HEADER']['title'] = get_gpt_comutator('Составь очень короткий текст для титульного слайда по следующим темам: ' + ', '.join(text_tuples), 20, 0.7, 0.8)
     print(topics)
     return presentation
 
